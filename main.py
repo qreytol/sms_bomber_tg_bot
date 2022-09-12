@@ -465,8 +465,8 @@ def spam_handler(phone, chat_id,sec,prox,force=False):
         bot.send_message(chat_id, 'Сервера зараз перегружені. Попробуйте знов через пару хвилин.')
 
 @bot.message_handler(content_types=['text'])
-try:
-    def handle_message_received(message):
+def handle_message_received(message):
+    try:
         chat_id = int(message.chat.id)
         text = message.text
     
