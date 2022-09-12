@@ -465,47 +465,48 @@ def spam_handler(phone, chat_id,sec,prox,force=False):
         bot.send_message(chat_id, 'Сервера зараз перегружені. Попробуйте знов через пару хвилин.')
 
 @bot.message_handler(content_types=['text'])
-def handle_message_received(message):
-    chat_id = int(message.chat.id)
-    text = message.text
-    
-    if text == '🤖Інформація':
-        bot.send_message(chat_id, 'Розробник бота: Ігор', parse_mode='HTML')
-
-    elif text == '☎️Запуск спама':
-        bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds +/-\n</b>\nПриклад: 380xxxxxxxxx 50 +', parse_mode='HTML')
-
-    elif text == '📈Статистика':
-        bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 40 сервісів</b>', parse_mode='HTML')
-
-    elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
-        bot.send_message(chat_id, 'Введи повідомлення в форматі: "РОЗІСЛАТИ: ваш_текст"')
-
-    elif text == '❗️ FAQ':
-        bot.send_message(chat_id, 'Ви автоматом берете відповідальність за користування цим ботом. Ми не несем відповідальності за ваші дії, тільки тест! дякую за увагу.')
-
-    elif text == '❌Зупинити спам':
-        if chat_id not in running_spams_per_chat_id:
-            bot.send_message(chat_id, 'Спам ще не починався')
-        else:
-            running_spams_per_chat_id.remove(chat_id)
-
-    elif text == 'addbl':
-        addbl(message)
-
-    elif text == 'delbl':
-        delbl(message)
-
-    elif 'РОЗІСЛАТИ: ' in text and chat_id==ADMIN_CHAT_ID:
-        msg = text.replace("РОЗІСЛАТИ: ","")
-        send_message_users(msg)
 try:
-    elif len(text) >= 12 <= 19:
-        sec = message.text.split()[1]
-        prox = message.text.split()[2]
-        num = message.text.split()[0]
-        phone = text
-        spam_handler(num, chat_id,sec,prox)
+    def handle_message_received(message):
+        chat_id = int(message.chat.id)
+        text = message.text
+    
+        if text == '🤖Інформація':
+            bot.send_message(chat_id, 'Розробник бота: Ігор', parse_mode='HTML')
+
+        elif text == '☎️Запуск спама':
+            bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds +/-\n</b>\nПриклад: 380xxxxxxxxx 50 +', parse_mode='HTML')
+
+        elif text == '📈Статистика':
+            bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 40 сервісів</b>', parse_mode='HTML')
+
+        elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
+            bot.send_message(chat_id, 'Введи повідомлення в форматі: "РОЗІСЛАТИ: ваш_текст"')
+
+        elif text == '❗️ FAQ':
+            bot.send_message(chat_id, 'Ви автоматом берете відповідальність за користування цим ботом. Ми не несем відповідальності за ваші дії, тільки тест! дякую за увагу.')
+
+        elif text == '❌Зупинити спам':
+            if chat_id not in running_spams_per_chat_id:
+                bot.send_message(chat_id, 'Спам ще не починався')
+            else:
+                running_spams_per_chat_id.remove(chat_id)
+
+        elif text == 'addbl':
+            addbl(message)
+
+        elif text == 'delbl':
+            delbl(message)
+
+        elif 'РОЗІСЛАТИ: ' in text and chat_id==ADMIN_CHAT_ID:
+            msg = text.replace("РОЗІСЛАТИ: ","")
+            send_message_users(msg)
+        
+        elif len(text) >= 12 <= 19:
+            sec = message.text.split()[1]
+            prox = message.text.split()[2]
+            num = message.text.split()[0]
+            phone = text
+            spam_handler(num, chat_id,sec,prox)
 except IndexError:
     pass
 
