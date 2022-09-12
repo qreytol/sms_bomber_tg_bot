@@ -507,11 +507,11 @@ def handle_message_received(message):
             num = message.text.split()[0]
             phone = text
             spam_handler(num, chat_id,sec,prox)
-except IndexError:
-    pass
 
-    else:
-        bot.send_message(chat_id, f'Номер введений неправильно. Введено {len(text)} символів, а треба 12')
-
+        else:
+            bot.send_message(chat_id, f'Номер введений неправильно. Введено {len(text)} символів, а треба 12')
+    except IndexError:
+        pass
+  
 if __name__ == '__main__':
     bot.polling(none_stop=True)
