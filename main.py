@@ -400,9 +400,10 @@ def send_for_number(aa):
         d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
         d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://agat-m.com.ua/send.php',headers=headers,data={'name': name,'phone': number_plus})
-        d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}}',headers=headers)
+        d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}',headers=headers)
         d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,json={"phone": number_plus})
-        d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,json={'phone': number_plus})        coun+=1
+        d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,json={'phone': number_plus})
+        coun+=1
         print(f'Круг {coun}')
     except:
         print(d.text)
