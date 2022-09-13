@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as BS
 from fake_useragent import UserAgent
+from termcolor import colored
 
 ua = UserAgent()
 
@@ -65,9 +66,9 @@ def check_ip(proxys_list,proxys_valid,counts):
                 'User-Agent': ua.random
             }
             url_google = 'https://www.google.com'
-            google_reguest = requests.get(url_google,proxies=proxies,headers=headers,timeout=1)
+            google_reguest = requests.get(url_google,proxies=proxies,headers=headers,timeout=0.25)
             if google_reguest.status_code == 200:
-                print(i)
+                print(colored(i, 'green'))
                 proxys_valid.append(i)
                 if len(proxys_valid) == counts:
                     break
