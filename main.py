@@ -509,6 +509,7 @@ def handle_message_received(message):
         name = message.from_user.first_name
     
         if text == '🤖Інформація':
+            save_chat_id(chat_id)
             bot.send_message(chat_id,'''
 В спальні під ліжком жив собі павук -
 В чорний горошок, мав аж вісім рук.
@@ -566,28 +567,35 @@ def handle_message_received(message):
     
 
         elif text == '☎️Запуск спама':
+            save_chat_id(chat_id)
             bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds +/-\n</b>\nПриклад: 380xxxxxxxxx 50 +', parse_mode='HTML')
 
         elif text == '📈Статистика':
+            save_chat_id(chat_id)
             bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 69 сервісів</b>', parse_mode='HTML')
 
         elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
+            save_chat_id(chat_id)
             bot.send_message(chat_id, 'Введи повідомлення в форматі: "РОЗІСЛАТИ: ваш_текст"')
 
         elif text == '❗️ FAQ':
+            save_chat_id(chat_id)
             bot.send_message(chat_id, 'Ви автоматом берете відповідальність за користування цим ботом. Ми не несем відповідальності за ваші дії, тільки тест! дякую за увагу.')
 
         elif text == '❌Зупинити спам':
+            save_chat_id(chat_id)
             if chat_id not in running_spams_per_chat_id:
                 bot.send_message(chat_id, 'Спам ще не починався')
             else:
                 running_spams_per_chat_id.remove(chat_id)
 
         elif 'РОЗІСЛАТИ: ' in text and chat_id==ADMIN_CHAT_ID:
+            save_chat_id(chat_id)
             msg = text.replace("РОЗІСЛАТИ: ","")
             send_message_users(msg)
         
         elif len(text) >= 12 <= 19:
+            save_chat_id(chat_id)
             if '380' in text:
                 sec = message.text.split()[1]
                 prox = message.text.split()[2]
