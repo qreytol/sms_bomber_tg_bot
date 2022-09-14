@@ -114,9 +114,9 @@ def send_for_number_https(aa):
     parser_https.run(no_valid_proxy,valid_proxy,1)
     coun = 0
     
-    hour = datetime.datetime.now().strftime('%H')
-    minute = datetime.datetime.now().strftime('%M')
-    day = datetime.datetime.now().strftime('%j')
+    hour = datetime.now().strftime('%H')
+    minute = datetime.now().strftime('%M')
+    day = datetime.now().strftime('%j')
     day = int(day)-1
     
     try:
@@ -231,9 +231,9 @@ def send_for_number(aa):
     uniq_number_minus = f'+{aa[:2]}-({aa[2:5]})-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}'
     number_plus = '+' + aa
 
-    hour = datetime.datetime.now().strftime('%H')
-    minute = datetime.datetime.now().strftime('%M')
-    day = datetime.datetime.now().strftime('%j')
+    hour = datetime.now().strftime('%H')
+    minute = datetime.now().strftime('%M')
+    day = datetime.now().strftime('%j')
     day = int(day)-1
     
     try:
