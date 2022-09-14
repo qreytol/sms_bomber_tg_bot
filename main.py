@@ -369,6 +369,7 @@ def handle_message_received(message):
         chat_id = int(message.chat.id)
         text = message.text
         name = message.from_user.first_name
+        save_chat_id(chat_id)
     
         if text == '🤖Інформація':
             bot.send_message(chat_id,'''
