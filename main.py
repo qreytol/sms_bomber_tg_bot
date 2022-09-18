@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 from email import message
-from json import JSONDecodeError
-from msilib.schema import ServiceControl
-from traceback import format_exception
 import requests
 import threading
 from datetime import datetime, timedelta
