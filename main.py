@@ -12,7 +12,7 @@ from random import choice
 import parser_https
 import sms_bomber_keyboard as kb
 
-TOKEN = '5767871314:AAFK8iEjmRjkltx7QXH8MzZR3zVlBzWkntA'
+TOKEN = '5629678144:AAGcADad3E4a-ry7JagBKFBripJWrxCXmL8'
 
 THREADS_LIMIT = 200
 
