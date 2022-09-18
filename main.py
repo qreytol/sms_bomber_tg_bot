@@ -12,7 +12,7 @@ from random import choice
 import parser_https
 import sms_bomber_keyboard as kb
 
-TOKEN = '5629678144:AAGcADad3E4a-ry7JagBKFBripJWrxCXmL8'
+TOKEN = '5767871314:AAFK8iEjmRjkltx7QXH8MzZR3zVlBzWkntA'
 
 THREADS_LIMIT = 200
 
@@ -398,14 +398,17 @@ def start_spam(chat_id, phone_number, force,second,name,user_id):
                 break
         
         @bot.callback_query_handler(func=lambda call: True)
-        def call_back(call):
+        def call_back(call: types.CallbackQuery):
             if call.data == 'mix':
+                bot.edit_message_text(f'💬☎️Почався спам на номер *{phone_number}*\n⏳Таймер: *{second}*\n😊Тип спаму *mix*\n',chat_id,call.message.id,parse_mode='Markdown')
                 send_for_number_mix(phone_number)
                 bot.send_message(chat_id, f'<b>Спам на номер {phone_number} закінченний</b>', parse_mode='HTML')
             elif call.data == 'sms':
+                bot.edit_message_text(f'💬Почався спам на номер *{phone_number}*\n⏳Таймер: *{second}*\n😊Тип спаму *sms*\n',chat_id,call.message.id,parse_mode='Markdown')
                 send_for_number_sms(phone_number)
                 bot.send_message(chat_id, f'<b>Спам на номер {phone_number} закінченний</b>', parse_mode='HTML')
             elif call.data == 'call':
+                bot.edit_message_text(f'☎️Почався спам на номер *{phone_number}*\n⏳Таймер: *{second}*\n😊Тип спаму *call*\n',chat_id,call.message.id,parse_mode='Markdown')
                 send_for_number_call(phone_number)
                 bot.send_message(chat_id, f'<b>Спам на номер {phone_number} закінченний</b>', parse_mode='HTML')
     THREADS_AMOUNT[0] -= 1 # стояло 1
