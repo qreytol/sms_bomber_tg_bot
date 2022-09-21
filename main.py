@@ -686,11 +686,23 @@ def handle_message_received(message: types.Message):
         text = message.text
         name = message.from_user.first_name
         user_id = message.from_user.id
+        
 
         if text == '💬Запуск спама':
             save_chat_id(chat_id)
             bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds</b>\n\nПриклад: 380000000000 50', parse_mode='HTML')
 
+
+        elif 'Додати' in text and text.split()[1] not in black:
+            black_list_add(text.split()[1])
+
+                
+        elif text == 'БД' and chat_id==ADMIN_CHAT_ID:
+            bot.send_document(chat_id,open('chat_ids.txt', 'rb'))
+            
+        elif text == 'ЧС' and chat_id==ADMIN_CHAT_ID:
+            bot.send_document(chat_id,open('black_list.txt', 'rb'))
+            
         elif text == '📊Статистика':
             save_chat_id(chat_id)
             bot.send_message(chat_id, f'📊<b>Статистика відображенна в реальному часі</b>: \n\n📕В боті {users_amount[0]} користувачів.\n☎️Call сервісів: 39\n💬SMS сервісів: 54', parse_mode='HTML')
@@ -724,19 +736,7 @@ def handle_message_received(message: types.Message):
                 else:
                     spam_handler(num, chat_id,sec,name,user_id)
             else:
-                bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380')
-        
-
-        elif 'Додати' in text and text.split()[1] not in black:
-            black_list_add(text.split()[1])
-
-                
-        elif text == 'БД' and chat_id==ADMIN_CHAT_ID:
-            bot.send_document(chat_id,open('chat_ids.txt', 'rb'))
-            
-        elif text == 'ЧС' and chat_id==ADMIN_CHAT_ID:
-            bot.send_document(chat_id,open('black_list.txt', 'rb'))
-            
+                bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380') 
 
         else:
             save_chat_id(chat_id)
