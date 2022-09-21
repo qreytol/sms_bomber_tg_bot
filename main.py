@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from email import message
 import requests
 import threading
 from datetime import datetime, timedelta
@@ -7,7 +5,6 @@ from telebot import TeleBot
 import telebot
 import time
 import random
-import fake_useragent
 from random import choice
 import parser_https
 import sms_bomber_keyboard as kb
@@ -84,9 +81,10 @@ def start(message):
     save_chat_id(message.chat.id)
 
 def send_for_number_sms(aa):
-    ua = fake_useragent.UserAgent()
+    with open('fake_user_agents.txt', 'rb') as f:
+        ua = f.read().split()
     headers = {
-        'User-Agent': ua.random
+        'User-Agent': choice(ua)
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -227,9 +225,10 @@ def send_for_number_sms(aa):
     print('все')
 
 def send_for_number_call(aa):
-    ua = fake_useragent.UserAgent()
+    with open('fake_user_agents.txt', 'rb') as f:
+        ua = f.read().split()
     headers = {
-        'User-Agent': ua.random
+        'User-Agent': choice(ua)
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
@@ -340,9 +339,10 @@ def send_for_number_call(aa):
 
 
 def send_for_number_mix(aa):
-    ua = fake_useragent.UserAgent()
+    with open('fake_user_agents.txt', 'rb') as f:
+        ua = f.read().split()
     headers = {
-        'User-Agent': ua.random
+        'User-Agent': choice(ua)
     }
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
