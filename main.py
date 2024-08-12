@@ -88,11 +88,7 @@ def send_for_number_sms(aa):
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
 
-    emails_list = ['prostoegorich2@gmail.com',
-          'autoskilz068@gmail.com',
-          'maksimbardic@gmail.com',
-          'ttgbot.proekt@gmail.com',
-          'webmine123@gmail.com']
+    emails_list = ["введи пару своих рабочих почт"]
     email = ''.join([random.choice(list('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM')) for m in range(10)]) + '@gmail.com'
 
     with open('nimes.txt', 'r',encoding='utf-8') as f:
@@ -247,11 +243,7 @@ def send_for_number_call(aa):
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
 
-    emails_list = ['prostoegorich2@gmail.com',
-          'autoskilz068@gmail.com',
-          'maksimbardic@gmail.com',
-          'ttgbot.proekt@gmail.com',
-          'webmine123@gmail.com']
+    emails_list = ["введи пару своих рабочих почт"]
     email = ''.join([random.choice(list('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM')) for m in range(10)]) + '@gmail.com'
 
     with open('nimes.txt', 'r',encoding='utf-8') as f:
@@ -373,11 +365,7 @@ def send_for_number_mix(aa):
 
     messages = ['Перезвоніть мені будь ласка', 'хочу поговорити за сам сайт','хочу проконсультоватись','чекаю вашого звінку']
 
-    emails_list = ['prostoegorich2@gmail.com',
-          'autoskilz068@gmail.com',
-          'maksimbardic@gmail.com',
-          'ttgbot.proekt@gmail.com',
-          'webmine123@gmail.com']
+    emails_list = ["введи пару своих рабочих почт"]
     email = ''.join([random.choice(list('qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM')) for m in range(10)]) + '@gmail.com'
 
     with open('nimes.txt', 'r',encoding='utf-8') as f:
